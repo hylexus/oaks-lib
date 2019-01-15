@@ -1,0 +1,20 @@
+dist: trusty
+sudo: required
+language: java
+
+#addons:
+#  sonarcloud:
+#    organization: "$SONAR_ORG"
+#    token:
+#      secure: "$SONAR_TOKEN"
+
+jdk:
+- oraclejdk8
+
+script:
+- mvn install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dgpg.skip=true
+
+cache:
+  directories:
+  - '$HOME/.m2/repository'
+  - '$HOME/.sonar/cache'
