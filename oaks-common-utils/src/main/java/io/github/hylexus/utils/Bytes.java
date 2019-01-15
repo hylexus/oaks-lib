@@ -1,4 +1,4 @@
-package cn.oaks.utils;
+package io.github.hylexus.utils;
 
 import java.util.Arrays;
 import java.util.List;

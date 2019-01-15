@@ -1,4 +1,4 @@
-package cn.oaks.utils;
+package io.github.hylexus.utils;
 
 /**
  * @author hylexus
