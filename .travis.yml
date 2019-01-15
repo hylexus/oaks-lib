@@ -13,6 +13,7 @@ jdk:
 
 script:
 - mvn install -Dmaven.javadoc.skip=true -Dgpg.skip=true
+- mvn clean package -P aliyun-snapshot -Dmaven.javadoc.skip=true -Dgpg.skip=true
 
 cache:
   directories:
