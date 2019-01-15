@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/hylexus/oaks-lib.svg?branch=master)](https://travis-ci.com/hylexus/oaks-lib)
 
 # 1. module details
 
