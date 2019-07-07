@@ -37,8 +37,13 @@ public class IntBitOpsTest {
     @Test
     public void intFrom2Bytes() {
         assertEquals(1, IntBitOps.intFrom2Bytes(new byte[]{0, 1}));
+        assertEquals(1, IntBitOps.intFrom2Bytes(new byte[]{2, 2, 0, 1}, 2));
+
         assertEquals(127, IntBitOps.intFrom2Bytes(new byte[]{0, Byte.MAX_VALUE}));
+        assertEquals(127, IntBitOps.intFrom2Bytes(new byte[]{1, 1, 1, 0, Byte.MAX_VALUE}, 3));
+
         assertEquals(128, IntBitOps.intFrom2Bytes(new byte[]{0, Byte.MIN_VALUE}));
+        assertEquals(128, IntBitOps.intFrom2Bytes(new byte[]{3, 4, 5, 6, 0, Byte.MIN_VALUE}, 4));
     }
 
     @Test
@@ -54,10 +59,19 @@ public class IntBitOpsTest {
     @Test
     public void intFrom3Bytes() {
         assertEquals(1, IntBitOps.intFrom3Bytes(new byte[]{0, 0, 1}));
+        assertEquals(1, IntBitOps.intFrom3Bytes(new byte[]{2, 2, 3, 0, 0, 0, 1}, 4));
+
         assertEquals(127, IntBitOps.intFrom3Bytes(new byte[]{0, 0, Byte.MAX_VALUE}));
+        assertEquals(127, IntBitOps.intFrom3Bytes(new byte[]{-1, 2, 0, 0, Byte.MAX_VALUE}, 2));
+
         assertEquals(128, IntBitOps.intFrom3Bytes(new byte[]{0, 0, Byte.MIN_VALUE}));
+        assertEquals(128, IntBitOps.intFrom3Bytes(new byte[]{-1, 2, 2, 0, 0, Byte.MIN_VALUE}, 3));
+
         assertEquals(0x01_00, IntBitOps.intFrom3Bytes(new byte[]{0, 1, 0}));
+        assertEquals(0x01_00, IntBitOps.intFrom3Bytes(new byte[]{4, 6, 6, 6, 0, 1, 0}, 4));
+
         assertEquals(0x01_00_00, IntBitOps.intFrom3Bytes(new byte[]{1, 0, 0}));
+        assertEquals(0x01_00_00, IntBitOps.intFrom3Bytes(new byte[]{1, 1, 1, 1, 0, 0}, 3));
     }
 
     @Test
@@ -78,23 +92,49 @@ public class IntBitOpsTest {
     @Test
     public void intFrom4Bytes() {
         assertEquals(0, IntBitOps.intFrom4Bytes(new byte[]{0, 0, 0, 0}));
+        assertEquals(0, IntBitOps.intFrom4Bytes(new byte[]{2, 2, 2, 0, 0, 0, 0}, 3));
+
         assertEquals(1, IntBitOps.intFrom4Bytes(new byte[]{0, 0, 0, 1}));
+        assertEquals(1, IntBitOps.intFrom4Bytes(new byte[]{3, 3, 3, 0, 0, 0, 1}, 3));
+
         assertEquals(127, IntBitOps.intFrom4Bytes(new byte[]{0, 0, 0, Byte.MAX_VALUE}));
+        assertEquals(127, IntBitOps.intFrom4Bytes(new byte[]{1, 1, 1, 1, 0, 0, 0, Byte.MAX_VALUE}, 4));
+
         assertEquals(128, IntBitOps.intFrom4Bytes(new byte[]{0, 0, 0, Byte.MIN_VALUE}));
+        assertEquals(128, IntBitOps.intFrom4Bytes(new byte[]{3, 4, 5, 0, 0, 0, Byte.MIN_VALUE}, 3));
+
         assertEquals(0x01_00_00, IntBitOps.intFrom4Bytes(new byte[]{0, 1, 0, 0}));
+        assertEquals(0x01_00_00, IntBitOps.intFrom4Bytes(new byte[]{2, 2, 0, 1, 0, 0}, 2));
+
         assertEquals(0x01_00_00_00, IntBitOps.intFrom4Bytes(new byte[]{1, 0, 0, 0}));
+        assertEquals(0x01_00_00_00, IntBitOps.intFrom4Bytes(new byte[]{1, 1, 0, 0, 0}, 1));
+
         assertEquals(0x01_01_01_01, IntBitOps.intFrom4Bytes(new byte[]{1, 1, 1, 1}));
+        assertEquals(0x01_01_01_01, IntBitOps.intFrom4Bytes(new byte[]{1, 1, 0, 1, 1, 1, 1}, 3));
+
         assertEquals(0x7F_FF_FF_FF, IntBitOps.intFrom4Bytes(new byte[]{Byte.MAX_VALUE, -1, -1, -1}));
+        assertEquals(0x7F_FF_FF_FF, IntBitOps.intFrom4Bytes(new byte[]{1, 1, 1, Byte.MAX_VALUE, -1, -1, -1}, 3));
+
         assertEquals(0x80_00_00_00, IntBitOps.intFrom4Bytes(new byte[]{Byte.MIN_VALUE, 0, 0, 0}));
+        assertEquals(0x80_00_00_00, IntBitOps.intFrom4Bytes(new byte[]{-1, Byte.MIN_VALUE, 0, 0, 0}, 1));
     }
 
     @Test
     public void intFrom1Byte() {
         assertEquals(1, IntBitOps.intFrom1Byte((byte) 1));
+        assertEquals(1, IntBitOps.intFrom1Byte(new byte[]{1, 0, 1}, 2));
+
         assertEquals(127, IntBitOps.intFrom1Byte((byte) 127));
+        assertEquals(127, IntBitOps.intFrom1Byte(new byte[]{1, 1, 1, 127}, 3));
+
         assertEquals(128, IntBitOps.intFrom1Byte((byte) 128));
+        assertEquals(128, IntBitOps.intFrom1Byte(new byte[]{-1, -1, (byte) 128}, 2));
+
         assertEquals(0xFF, IntBitOps.intFrom1Byte((byte) 0xFF));
+        assertEquals(0xFF, IntBitOps.intFrom1Byte(new byte[]{(byte) 0xFF}, 0));
+
         assertEquals(0xFF, IntBitOps.intFrom1Byte((byte) 0xFFFF));
+        assertEquals(0xFF, IntBitOps.intFrom1Byte(new byte[]{-1, -2, -3, (byte) 0xFFFF}, 3));
     }
 
     @Test

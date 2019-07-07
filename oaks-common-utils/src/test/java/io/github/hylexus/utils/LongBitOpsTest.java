@@ -35,8 +35,15 @@ public class LongBitOpsTest {
     @Test
     public void longFrom8Bytes() {
         assertEquals(0x55_22_33, LongBitOps.longFrom8Bytes(new byte[]{0, 0, 0, 0, 0, 85, 34, 51}));
+        assertEquals(0x55_22_33, LongBitOps.longFrom8Bytes(new byte[]{1, 1, 1, 0, 0, 0, 0, 0, 85, 34, 51}, 3));
+
         assertEquals(Long.MAX_VALUE, LongBitOps.longFrom8Bytes(new byte[]{127, -1, -1, -1, -1, -1, -1, -1}));
+        assertEquals(Long.MAX_VALUE, LongBitOps.longFrom8Bytes(new byte[]{1, -1, 127, -1, -1, -1, -1, -1, -1, -1}, 2));
+
         assertEquals(Long.MIN_VALUE, LongBitOps.longFrom8Bytes(new byte[]{-128, 0, 0, 0, 0, 0, 0, 0}));
+        assertEquals(Long.MIN_VALUE, LongBitOps.longFrom8Bytes(new byte[]{1, 1, 0, 0, -128, 0, 0, 0, 0, 0, 0, 0}, 4));
+
         assertEquals(271828456L, LongBitOps.longFrom8Bytes(new byte[]{0, 0, 0, 0, 16, 51, -59, -24}));
+        assertEquals(271828456L, LongBitOps.longFrom8Bytes(new byte[]{1, 1, 9, 0, 0, 0, 0, 16, 51, -59, -24}, 3));
     }
 }
