@@ -104,18 +104,18 @@
         </profile>
 
         <profile>
-            <id>aliyun-snapshot</id>
+            <id>my-aliyun</id>
 
             <distributionManagement>
                 <snapshotRepository>
-                    <id>aliyun-snapshot</id>
-                    <name>aliyun-snapshot</name>
-                    <url>http://47.98.157.103:8081/nexus/content/repositories/snapshots/</url>
+                    <id>my-aliyun-snapshot</id>
+                    <name>maven-snapshots</name>
+                    <url>http://47.98.157.103:8081/repository/maven-snapshots</url>
                 </snapshotRepository>
                 <repository>
-                    <id>aliyun-release</id>
-                    <name>aliyun-release</name>
-                    <url>http://47.98.157.103:8081/nexus/content/repositories/releases</url>
+                    <id>my-aliyun-release</id>
+                    <name>maven-releases</name>
+                    <url>http://47.98.157.103:8081/repository/maven-releases</url>
                 </repository>
             </distributionManagement>
         </profile>
