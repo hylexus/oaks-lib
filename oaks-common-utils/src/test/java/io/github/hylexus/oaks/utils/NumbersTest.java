@@ -1,4 +1,4 @@
-package io.github.hylexus.utils;
+package io.github.hylexus.oaks.utils;
 
 import org.junit.Test;
 
