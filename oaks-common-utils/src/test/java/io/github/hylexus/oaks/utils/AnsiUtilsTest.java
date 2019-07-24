@@ -22,4 +22,5 @@ public class AnsiUtilsTest {
         String string = AnsiUtils.buildString(RED, "hello", BRIGHT_BLUE, "world", AnsiForegroundColor.MAGENTA, "!");
         System.out.println(string);
     }
+
 }

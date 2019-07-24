@@ -13,7 +13,7 @@ public interface AnsiEscapeCode {
 
     String SEPARATOR = ";";
 
-    String getCode();
+    String getAnsiCode();
 
     AnsiEscapeCode RESET = () -> "0;39";
 }

@@ -35,6 +35,7 @@ import lombok.Getter;
 
 /**
  * See https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit
+ * <p>
  * Copied from org.springframework.boot.ansi.AnsiBackground
  *
  * @author Phillip Webb
@@ -63,9 +64,9 @@ public enum AnsiBackgroundColor implements AnsiEscapeCode {
     DEFAULT_BACKGROUND_COLOR("49"),
     ;
 
-    private String code;
+    private String ansiCode;
 
     AnsiBackgroundColor(String code) {
-        this.code = code;
+        this.ansiCode = code;
     }
 }

@@ -21,7 +21,6 @@ import lombok.Getter;
 /**
  * See https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit
  * <p>
- * <p>
  * Copied from org.springframework.boot.ansi.AnsiColor
  *
  * @author Phillip Webb
@@ -48,10 +47,10 @@ public enum AnsiForegroundColor implements AnsiEscapeCode {
     BRIGHT_WHITE("97"),
 
     DEFAULT_FOREGROUND_COLOR("39");
-    private String code;
+    private String ansiCode;
 
     AnsiForegroundColor(String code) {
-        this.code = code;
+        this.ansiCode = code;
     }
 
 }

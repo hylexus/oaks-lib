@@ -18,13 +18,17 @@ package io.github.hylexus.oaks.utils;
 
 import io.github.hylexus.oaks.ansi.AnsiEscapeCode;
 
+import java.util.Locale;
+
 /**
  * Main logic was copied from org.springframework.boot.ansi.AnsiOutput#buildEnabled
  *
  * @author hylexus
  * Created At 2019-07-22 21:46
  */
-public class AnsiUtils {
+public abstract class AnsiUtils {
+
+    private static final String OS_NAME = System.getProperty("os.name").toLowerCase(Locale.ENGLISH);
 
     public static String buildString(Object... objects) {
         return buildString(true, objects);
@@ -33,10 +37,10 @@ public class AnsiUtils {
     /**
      * See org.springframework.boot.ansi.AnsiOutput#buildEnabled
      *
-     * @author Phillip Webb (original author of spring-boot's AnsiOutput#buildEnabled)
+     * @author Phillip Webb (original author of spring-boot's AnsiOutput#buildEnabled method)
      * @author hylexus
      */
-    public static String buildString(boolean resetAllPropsAfterReturning, Object... objects) {
+    public static String buildString(boolean resetAllAnsiPropsAfterReturning, Object... objects) {
         StringBuilder sb = new StringBuilder();
         boolean ansiPrefixAppended = false;
         boolean ansiOccurred = false;
@@ -54,7 +58,7 @@ public class AnsiUtils {
                     ansiPrefixAppended = true;
                 }
 
-                sb.append(((AnsiEscapeCode) obj).getCode());
+                sb.append(((AnsiEscapeCode) obj).getAnsiCode());
             } else {
                 if (ansiPrefixAppended) {
                     sb.append(AnsiEscapeCode.SUFFIX);
@@ -64,7 +68,7 @@ public class AnsiUtils {
             }
         }
 
-        if (resetAllPropsAfterReturning && ansiOccurred) {
+        if (resetAllAnsiPropsAfterReturning && ansiOccurred) {
             if (ansiPrefixAppended) {
                 sb.append(AnsiEscapeCode.SEPARATOR);
             } else {
@@ -74,4 +78,5 @@ public class AnsiUtils {
         }
         return sb.toString();
     }
+
 }
