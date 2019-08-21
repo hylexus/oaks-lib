@@ -1,11 +1,17 @@
 package io.github.hylexus.oaks.utils;
 
+import lombok.NonNull;
+
 /**
  * @author hylexus
  * createdAt 2019/7/7
  */
 @SuppressWarnings("AlibabaAbstractClassShouldStartWithAbstractNaming")
 public abstract class BcdOps {
+
+    public static String bytes2BcdString(@NonNull final byte[] bytes, final int start, final int length) {
+        return bcd2String(bytes, start, start + length);
+    }
 
     public static String bcd2String(final byte[] bytes, final int start, final int end) {
 
@@ -33,6 +39,16 @@ public abstract class BcdOps {
      */
     public static String bcd2String(final byte[] bytes) {
         return bcd2String(bytes, 0, bytes.length);
+    }
+
+    /**
+     * A alias for {@link #string2Bcd(String)}
+     *
+     * @param str a String encoded by BCD
+     * @return bytes array based on BCD
+     */
+    public static byte[] bcdString2bytes(final String str) {
+        return string2Bcd(str);
     }
 
     /**

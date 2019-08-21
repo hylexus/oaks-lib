@@ -88,6 +88,10 @@ public abstract class IntBitOps {
                 ((bytes[startIndex + 3] & MASK));
     }
 
+    public static int intFromBytes(@NonNull final byte[] bytes, int start, int len) {
+        return intFromBytes(Bytes.subSequence(bytes, start, len));
+    }
+
     public static int intFromBytes(@NonNull final byte[] bytes) {
         switch (bytes.length) {
             case 1:

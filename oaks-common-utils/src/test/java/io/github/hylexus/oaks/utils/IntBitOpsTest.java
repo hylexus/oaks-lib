@@ -142,6 +142,12 @@ public class IntBitOpsTest {
         assertEquals(0x01_00_00_00, IntBitOps.intFromBytes(new byte[]{1, 0, 0, 0}));
     }
 
+    @Test
+    public void intFromBytesWithLen() {
+        assertEquals(0x01_00_00_00, IntBitOps.intFromBytes(new byte[]{1, 0, 0, 0}, 0, 4));
+        assertEquals(0xFF, IntBitOps.intFromBytes(new byte[]{-1, -2, -3, (byte) 0xFFFF}, 3, 1));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void intFromBytesIllegalArgument() {
         IntBitOps.intFromBytes(new byte[]{1, 0, 0, 0, 0});

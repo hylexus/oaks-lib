@@ -16,9 +16,11 @@ public class BcdOpsTest {
         byte[] bytes = {118, -119, 1, 0, 83, 96};
         assertEquals("768901005360", BcdOps.bcd2String(bytes));
         assertEquals("768901005360", BcdOps.bcd2String(bytes, 0, bytes.length));
+        assertEquals("768901005360", BcdOps.bytes2BcdString(bytes, 0, bytes.length));
 
         byte[] bytes1 = {1, 1, 1, 118, -119, 1, 0, 83, 96, 1, 1};
         assertEquals("768901005360", BcdOps.bcd2String(bytes1, 3, bytes1.length - 2));
+        assertEquals("768901005360", BcdOps.bytes2BcdString(bytes1, 3, 6));
 
         assertEquals("00000000000", BcdOps.bcd2String(new byte[]{0, 0, 0, 0, 0, 0}));
         byte[] bytes2 = {1, 1, 0, 0, 0, 0, 0, 0, 1, 1};

@@ -7,9 +7,9 @@
     <artifactId>oaks-common-utils</artifactId>
 
     <parent>
-        <groupId>io.github.hylexus</groupId>
+        <groupId>io.github.hylexus.oaks</groupId>
         <artifactId>oaks-lib</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <name>oaks-common-utils</name>
