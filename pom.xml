@@ -6,11 +6,15 @@
 
     <groupId>io.github.hylexus.oaks</groupId>
     <artifactId>oaks-lib</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>pom</packaging>
     <name>oaks-lib</name>
     <description>a common lib of generic Ops in java</description>
     <url>https://github.com/hylexus/oaks-lib</url>
+
+    <modules>
+        <module>oaks-common-utils</module>
+    </modules>
 
     <licenses>
         <license>
@@ -29,10 +33,6 @@
         <developerConnection>scm:git:git@github.com:hylexus/oaks-lib.git</developerConnection>
         <url>git@github.com:hylexus/oaks-lib.git</url>
     </scm>
-
-    <modules>
-        <module>oaks-common-utils</module>
-    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -209,6 +209,34 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <configLocation>check-style/check-style.xml</configLocation>
+                        <encoding>UTF-8</encoding>
+                        <consoleOutput>false</consoleOutput>
+                        <failsOnError>false</failsOnError>
+                        <linkXRef>true</linkXRef>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>verify-style</id>
+                            <phase>process-classes</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>8.23</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>

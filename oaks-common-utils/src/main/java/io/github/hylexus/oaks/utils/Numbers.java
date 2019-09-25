@@ -88,20 +88,20 @@ public abstract class Numbers {
         return (1 << index) | value;
     }
 
-    public static int resetBitAt(final int value, final int index) {
-        return value & ~(1 << index);
-    }
-
-    public static long resetBitAt(final long value, final int index) {
-        return value & ~(1 << index);
-    }
-
     public static int setBitAt(final int value, final int index, final boolean flag) {
         return flag ? setBitAt(value, index) : resetBitAt(value, index);
     }
 
     public static long setBitAt(final long value, final int index, final boolean flag) {
         return flag ? setBitAt(value, index) : resetBitAt(value, index);
+    }
+
+    public static int resetBitAt(final int value, final int index) {
+        return value & ~(1 << index);
+    }
+
+    public static long resetBitAt(final long value, final int index) {
+        return value & ~(1 << index);
     }
 
     public static int getBitRangeAsInt(final int number, final int start, final int end) {

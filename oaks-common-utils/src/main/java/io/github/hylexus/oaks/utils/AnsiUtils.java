@@ -30,10 +30,6 @@ public abstract class AnsiUtils {
 
     private static final String OS_NAME = System.getProperty("os.name").toLowerCase(Locale.ENGLISH);
 
-    public static String buildString(Object... objects) {
-        return buildString(true, objects);
-    }
-
     /**
      * See org.springframework.boot.ansi.AnsiOutput#buildEnabled
      *

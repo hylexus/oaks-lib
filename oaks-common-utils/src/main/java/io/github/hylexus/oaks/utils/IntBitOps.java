@@ -89,22 +89,23 @@ public abstract class IntBitOps {
     }
 
     public static int intFromBytes(@NonNull final byte[] bytes, int start, int len) {
-        return intFromBytes(Bytes.subSequence(bytes, start, len));
+        switch (len) {
+            case 1:
+                return intFrom1Byte(bytes, start);
+            case 2:
+                return intFrom2Bytes(bytes, start);
+            case 3:
+                return intFrom3Bytes(bytes, start);
+            case 4:
+                return intFrom4Bytes(bytes, start);
+            default: {
+                throw new IllegalArgumentException("len ∈ [1,4]");
+            }
+        }
     }
 
     public static int intFromBytes(@NonNull final byte[] bytes) {
-        switch (bytes.length) {
-            case 1:
-                return intFrom1Byte(bytes[0]);
-            case 2:
-                return intFrom2Bytes(bytes);
-            case 3:
-                return intFrom3Bytes(bytes);
-            case 4:
-                return intFrom4Bytes(bytes);
-            default:
-                throw new IllegalArgumentException("bytes length ∈ [1,4]");
-        }
+        return intFromBytes(bytes, 0, bytes.length);
     }
 
 }

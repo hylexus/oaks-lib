@@ -41,11 +41,16 @@ public abstract class ClassUtils {
         return loadClass(path, CLASS_NAME_FILTER, classFilter, parentClassLoader);
     }
 
-    public static List<Class<?>> loadClass(String path, Predicate<String> classNameFilter, Predicate<Class<?>> classFilter) throws IOException {
+    public static List<Class<?>> loadClass(String path, Predicate<String> classNameFilter, Predicate<Class<?>> classFilter)
+            throws IOException {
+
         return loadClass(path, classNameFilter, classFilter, SYSTEM_CLASS_LOADER);
     }
 
-    public static List<Class<?>> loadClass(String path, Predicate<String> classNameFilter, Predicate<Class<?>> classFilter, ClassLoader parentClassLoader) throws IOException {
+    public static List<Class<?>> loadClass(
+            String path, Predicate<String> classNameFilter,
+            Predicate<Class<?>> classFilter, ClassLoader parentClassLoader) throws IOException {
+
         final List<Class<?>> ret = new ArrayList<>();
         final File dir = new File(path);
         if (!dir.exists() || !dir.isDirectory()) {
@@ -74,7 +79,10 @@ public abstract class ClassUtils {
         return ret;
     }
 
-    private static List<Class<?>> loadFromJarFile(File file, Predicate<String> classNameFilter, Predicate<Class<?>> classFilter, ClassLoader parentClassLoader) throws IOException {
+    private static List<Class<?>> loadFromJarFile(
+            File file, Predicate<String> classNameFilter,
+            Predicate<Class<?>> classFilter, ClassLoader parentClassLoader) throws IOException {
+
         final URL url = file.toURI().toURL();
         final JarFile jarFile = new JarFile(file);
 

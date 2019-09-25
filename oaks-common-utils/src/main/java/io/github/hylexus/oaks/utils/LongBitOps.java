@@ -34,21 +34,21 @@ public abstract class LongBitOps {
     }
 
     public static long longFrom8Bytes(@NonNull final byte[] bytes, final int startIndex) {
-//        return ((bytes[0] & MASK) << 56)
-//                |
-//                ((bytes[1] & MASK) << 48)
-//                |
-//                ((bytes[2] & MASK) << 40)
-//                |
-//                ((bytes[3] & MASK) << 32)
-//                |
-//                ((bytes[4] & MASK) << 24)
-//                |
-//                ((bytes[5] & MASK) << 16)
-//                |
-//                ((bytes[6] & MASK) << 8)
-//                |
-//                ((bytes[7] & MASK));
+        //        return ((bytes[0] & MASK) << 56)
+        //                |
+        //                ((bytes[1] & MASK) << 48)
+        //                |
+        //                ((bytes[2] & MASK) << 40)
+        //                |
+        //                ((bytes[3] & MASK) << 32)
+        //                |
+        //                ((bytes[4] & MASK) << 24)
+        //                |
+        //                ((bytes[5] & MASK) << 16)
+        //                |
+        //                ((bytes[6] & MASK) << 8)
+        //                |
+        //                ((bytes[7] & MASK));
         long value = 0;
         for (int i = 0; i < BYTE_COUNT_OF_LONG; i++) {
             value |= (bytes[startIndex + i] & MASK) << ((BYTE_COUNT_OF_LONG - 1 - i) << 3);
