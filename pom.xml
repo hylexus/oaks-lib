@@ -102,23 +102,6 @@
                 </repository>
             </distributionManagement>
         </profile>
-
-        <profile>
-            <id>my-aliyun</id>
-
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>my-aliyun-snapshot</id>
-                    <name>maven-snapshots</name>
-                    <url>http://47.98.157.103:8081/repository/maven-snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>my-aliyun-release</id>
-                    <name>maven-releases</name>
-                    <url>http://47.98.157.103:8081/repository/maven-releases</url>
-                </repository>
-            </distributionManagement>
-        </profile>
     </profiles>
 
     <build>
