@@ -24,9 +24,7 @@ public abstract class BcdOps {
             builder.append(bytes[i] & 0x0f);
         }
 
-        return "0".equalsIgnoreCase(builder.toString().substring(0, 1))
-                ? builder.toString().substring(1)
-                : builder.toString();
+        return builder.toString();
     }
 
     /**
