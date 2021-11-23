@@ -9,8 +9,20 @@ import lombok.NonNull;
 @SuppressWarnings("AlibabaAbstractClassShouldStartWithAbstractNaming")
 public abstract class BcdOps {
 
+    /**
+     * @see #bytes2BcdStringV2(byte[], int, int)
+     */
+    @Deprecated
     public static String bytes2BcdString(@NonNull final byte[] bytes, final int start, final int length) {
         return bcd2String(bytes, start, start + length);
+    }
+
+    public static String bytes2BcdStringV2(@NonNull final byte[] bytes, final int start, final int length) {
+        return bcd2StringV2(bytes, start, start + length);
+    }
+
+    public static String bcd2StringV2(final byte[] bytes) {
+        return bcd2StringV2(bytes, 0, bytes.length);
     }
 
     public static String bcd2StringV2(final byte[] bytes, final int start, final int end) {
@@ -57,7 +69,9 @@ public abstract class BcdOps {
      *
      * @param bytes a bytes array based on BCD(Binary-Coded Decimal)
      * @return Hexadecimal string
+     * @see #bcd2StringV2(byte[])
      */
+    @Deprecated
     public static String bcd2String(final byte[] bytes) {
         return bcd2String(bytes, 0, bytes.length);
     }
