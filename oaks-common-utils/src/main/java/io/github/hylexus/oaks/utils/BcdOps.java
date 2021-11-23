@@ -13,7 +13,7 @@ public abstract class BcdOps {
         return bcd2String(bytes, start, start + length);
     }
 
-    public static String bcd2String(final byte[] bytes, final int start, final int end) {
+    public static String bcd2StringV2(final byte[] bytes, final int start, final int end) {
 
         assert start < end : "start < end";
 
@@ -23,8 +23,31 @@ public abstract class BcdOps {
             builder.append((bytes[i] & 0xf0) >>> 4);
             builder.append(bytes[i] & 0x0f);
         }
-
         return builder.toString();
+    }
+
+    /**
+     * @author chordmo
+     * @author hylexus
+     */
+    public static String bcd2String(final byte[] bytes, final int start, final int end, boolean remoteFirstZero) {
+        final String builder = bcd2StringV2(bytes, start, end);
+
+        if (remoteFirstZero) {
+            return "0".equalsIgnoreCase(builder.substring(0, 1))
+                    ? builder.substring(1)
+                    : builder.toString();
+        }
+        return builder.toString();
+    }
+
+    /**
+     * @see #bcdString2bytes(String)
+     * @deprecated Use {@link #bcd2StringV2(byte[], int, int)} instead.
+     */
+    @Deprecated
+    public static String bcd2String(final byte[] bytes, final int start, final int end) {
+        return bcd2String(bytes, start, end, true);
     }
 
     /**

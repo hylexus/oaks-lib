@@ -6,7 +6,7 @@
 
     <groupId>io.github.hylexus.oaks</groupId>
     <artifactId>oaks-lib</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>pom</packaging>
     <name>oaks-lib</name>
     <description>a common lib of generic Ops in java</description>
@@ -45,7 +45,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.8</version>
+                <version>1.18.20</version>
                 <scope>compile</scope>
             </dependency>
         </dependencies>
