@@ -73,11 +73,11 @@ public abstract class Numbers {
     }
 
     public static int getBitAt(final long value, final int index) {
-        return (int) (((1 << index) & value) >> index);
+        return (int) (((1L << index) & value) >>> index);
     }
 
     public static int getBitAt(final int value, final int index) {
-        return (((1 << index) & value) >> index);
+        return (((1 << index) & value) >>> index);
     }
 
     public static int setBitAt(final int value, final int index) {
@@ -85,7 +85,7 @@ public abstract class Numbers {
     }
 
     public static long setBitAt(final long value, final int index) {
-        return (1 << index) | value;
+        return (1L << index) | value;
     }
 
     public static int setBitAt(final int value, final int index, final boolean flag) {
@@ -101,7 +101,7 @@ public abstract class Numbers {
     }
 
     public static long resetBitAt(final long value, final int index) {
-        return value & ~(1 << index);
+        return value & ~(1L << index);
     }
 
     public static int getBitRangeAsInt(final int number, final int start, final int end) {

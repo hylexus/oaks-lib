@@ -80,12 +80,16 @@ public class NumbersTest {
         assertEquals(0, Numbers.getBitAt(1L, 1));
         assertEquals(0, Numbers.getBitAt(3L, 2));
         assertEquals(1, Numbers.getBitAt(3L, 1));
+        assertEquals(1, Numbers.getBitAt(4611686087146864640L, 62));
+        assertEquals(1, Numbers.getBitAt(4611686087146864640L, 36));
     }
 
     @Test
     public void setBitAtInt() {
         assertEquals(0b1011, Numbers.setBitAt(0b1010, 0));
         assertEquals(0b1010, Numbers.setBitAt(0b1010, 1));
+        final int i = Numbers.setBitAt(0, 31);
+        assertEquals(1, Numbers.getBitAt(i, 31));
     }
 
     @Test
@@ -104,6 +108,7 @@ public class NumbersTest {
     public void resetBitAtLong() {
         assertEquals(0, Numbers.resetBitAt(1L, 0));
         assertEquals(1, Numbers.resetBitAt(1L, 1));
+        assertEquals(-9223372036854775808L, Numbers.resetBitAt(-4611686018427387904L, 62));
     }
 
     @Test
@@ -118,6 +123,8 @@ public class NumbersTest {
         assertEquals(0, Numbers.setBitAt(1L, 0, false));
         assertEquals(0b10, Numbers.setBitAt(2L, 0, false));
         assertEquals(0b11, Numbers.setBitAt(2L, 0, true));
+        assertEquals(4611686018427387904L, Numbers.setBitAt(0L, 62, true));
+        assertEquals(1, Numbers.getBitAt(4611686018427387904L, 62));
     }
 
     @Test
